@@ -1,9 +1,7 @@
-import { useState } from "react";
+import Tabs from "./Tabs";
 
 const App = () => {
-  const [tabsData, setTabsData] = useState({});
-
-  return;
+  return <Tabs />;
 };
 
 export default App;
