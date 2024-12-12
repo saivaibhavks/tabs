@@ -25,6 +25,14 @@ const Profile = () => {
         }
         break;
 
+      case "age":
+        if (val.length < 18) {
+          error = "Age should be gretaer than 18";
+        } else if (val.length > 100) {
+          error = "Age should be less than 100";
+        }
+        break;
+
       default:
         break;
     }
@@ -78,6 +86,7 @@ const Profile = () => {
             onInput={(e) => inputHandler(e, "age")}
             required
           />
+          {errors.age && <span className="error-msg">{errors.age}</span>}
         </div>
         <div className="email">
           <label htmlFor="email">Email</label>
