@@ -8,13 +8,44 @@ const Profile = () => {
     email: "",
   });
 
+  const [errors, setErrors] = useState({});
+
+  const validateInputFields = (val, field) => {
+    let error = "";
+    var regex = /^[a-zA-Z][a-zA-Z\\s]+$/;
+
+    switch (field) {
+      case "fullName":
+        if (!val.trim()) {
+          error = "Full Nmae is Required";
+        } else if (!regex.test(val)) {
+          error = "Full Nmae validation";
+        } else if (val.length > 50) {
+          error = "Full name length";
+        }
+        break;
+
+      default:
+        break;
+    }
+
+    return error;
+  };
+
   const inputHandler = (e, field) => {
     console.log("event", e.target.value);
     const val = e.target.value;
     const temp = { ...profileData };
     temp[field] = val;
     setProfileData(temp);
+
+    const err = validateInputFields(val, field);
+    let tempErr = { ...errors };
+    tempErr[field] = err;
+    setErrors(tempErr);
   };
+
+  console.log("errors", errors);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -34,6 +65,9 @@ const Profile = () => {
             onInput={(e) => inputHandler(e, "fullName")}
             required
           />
+          {errors.fullName && (
+            <span className="error-msg">{errors.fullName}</span>
+          )}
         </div>
         <div className="age">
           <label htmlFor="age">Age</label>
