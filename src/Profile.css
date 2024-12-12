@@ -1,4 +1,8 @@
-.profile-details {
+.profile-details,
+.full-name,
+.age,
+.email {
   display: flex;
   flex-direction: column;
+  gap: 30px;
 }
