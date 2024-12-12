@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Tabs.css";
+import Profile from "./Profile";
 
 const Tabs = () => {
   const [tabsData, setTabsData] = useState({});
@@ -42,9 +43,7 @@ const Tabs = () => {
         </button>
       </div>
 
-      <div className="body">
-        <p>{activeTab}</p>
-      </div>
+      <div className="body">{activeTab === "profile" && <Profile />}</div>
     </div>
   );
 };
