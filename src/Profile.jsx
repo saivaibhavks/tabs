@@ -12,16 +12,16 @@ const Profile = () => {
 
   const validateInputFields = (val, field) => {
     let error = "";
-    var regex = /^[a-zA-Z][a-zA-Z\\s]+$/;
+    const regex = /^[a-zA-Z\s]+$/;
 
     switch (field) {
       case "fullName":
         if (!val.trim()) {
-          error = "Full Nmae is Required";
+          error = "Full Name is Required";
         } else if (!regex.test(val)) {
-          error = "Full Nmae validation";
+          error = "Only Alphabets and spaces are allowed";
         } else if (val.length > 50) {
-          error = "Full name length";
+          error = "Full name should be less than 50 characters";
         }
         break;
 
